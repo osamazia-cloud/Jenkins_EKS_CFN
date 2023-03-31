@@ -4,9 +4,8 @@ pipeline {
         stage('Deploy Stack') {
             steps {
              sh "pwd"
-             sh "aws"
-            // sh 'aws --version'
-            //sh "aws cloudformation create-stack --stack-name EKS-Cluster --template-body file://EKS-Cluster.yml --region 'us-east-1'"
+             sh 'aws --version'
+             sh "aws cloudformation create-stack --stack-name EKS-Cluster --template-body file://EKS-Cluster.yml --region 'us-east-1'"
               }
              }
             }
