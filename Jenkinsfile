@@ -8,10 +8,12 @@ pipeline {
     stages {
         stage('Deploy Stack') {
             steps {
+                script{
              sh "pwd"
              sh 'aws --version'
              sh "aws cloudformation create-stack --stack-name EKS-Cluster --template-body file://EKS-Cluster.yml --region 'us-east-1' --parameters ParameterKey=KeyPairName,ParameterValue="${params.KeyPairName}" ParameterKey=WorkerNodesInstanceType,ParameterValue="${params.WorkerNodesInstanceType}" ParameterKey=NumWorkerNodes,ParameterValue="${params.NumWorkerNodes}""
               }
+            }
              }
             }
             }
