@@ -6,9 +6,8 @@ pipeline {
     stages {
         stage('Deploy Stack') {
             steps {
-             sh "pwd"
              sh 'aws --version'
-             sh "aws cloudformation create-stack --stack-name EKS-Cluster --template-body file://EKS-Cluster.yml --region 'us-east-1' --capabilities CAPABILITY_NAMED_IAM --parameters ParameterKey=KeyPairName,ParameterValue=KeyPair"
+             sh "aws cloudformation create-stack --stack-name EKS-Cluster --template-body file://EKS-Cluster.yml --region 'us-east-1' --capabilities CAPABILITY_NAMED_IAM --parameters ParameterKey=KeyPairName,ParameterValue="${params.KeyPairName}""
               }
              }
             }
