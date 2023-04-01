@@ -1,11 +1,14 @@
 pipeline {
     agent any
+    parameters {
+        string(name: "KeyPairName", defaultValue: "KeyPair", trim: true, description: "Name of an existing EC2 key pair (for SSH-access to the worker node instances)")
+    }
     stages {
         stage('Deploy Stack') {
             steps {
              sh "pwd"
              sh 'aws --version'
-             sh "aws cloudformation create-stack --stack-name EKS-Cluster --template-body file://EKS-Cluster.yml --region 'us-east-1'"
+             sh "aws cloudformation create-stack --stack-name EKS-Cluster --template-body file://EKS-Cluster.yml --region 'us-east-1' --parameters ParameterKey=KeyPairName,ParameterValue="${params.KeyPairName}""
               }
              }
             }
