@@ -9,6 +9,7 @@ pipeline {
               }
              }
             }
+            }
 
 // @Library('github.com/releaseworks/jenkinslib') _
 // pipeline {
